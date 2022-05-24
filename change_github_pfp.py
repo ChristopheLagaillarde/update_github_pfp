@@ -6,11 +6,14 @@
 # Version : 1.0
 
 from time import sleep
+
+from selenium import webdriver
+
 from Credential import Credential
 from selenium_tools.id_exist import id_exist
 
 
-def change_github_pfp(driver):
+def change_github_pfp(driver: webdriver) -> None:
     path_to_pic = 'C://Users/Lagaillarde/PycharmProject/automatically_change_pfp/temporary/cat.png'
     driver.get("https://thiscatdoesnotexist.com/")
     with open(path_to_pic, 'wb') as file:

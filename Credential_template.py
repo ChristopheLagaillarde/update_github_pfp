@@ -9,8 +9,8 @@ class Credential:
         self.email = ""     # Add your github login email here
         self.password = ""  # Add your github login password here
 
-    def get_email(self):
+    def get_email(self) -> str:
         return self.email
 
-    def get_password(self):
+    def get_password(self) -> str:
         return self.password
