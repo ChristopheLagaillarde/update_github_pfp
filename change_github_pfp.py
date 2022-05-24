@@ -21,7 +21,7 @@ def change_github_pfp(driver: webdriver) -> None:
                    .screenshot_as_png)
     driver.get("https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsettings%2Fprofile")
 
-    while id_exist("login_field", driver):
+    while not id_exist("login_field", driver):
         sleep(1)
     my_login = Credential()
     driver.find_element_by_id('login_field').send_keys(my_login.get_email())
@@ -29,7 +29,7 @@ def change_github_pfp(driver: webdriver) -> None:
     driver.find_element_by_name('commit').click()
     del my_login
 
-    while id_exist("avatar_upload", driver):
+    while not id_exist("avatar_upload", driver):
         sleep(1)
     driver.find_element_by_id("avatar_upload").send_keys(path_to_pic)
 
