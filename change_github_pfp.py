@@ -37,7 +37,7 @@ def change_github_pfp(driver: webdriver) -> None:
 
     del my_login
 
-    while not id_exist("avatar_upload", driver):
+    while id_exist("avatar_upload", driver):
         sleep(1)
     driver.find_element_by_id("avatar_upload").send_keys(path_to_pic)
 
