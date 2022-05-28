@@ -11,6 +11,7 @@ from selenium import webdriver
 
 from Credential import Credential
 from selenium_tools.id_exist import id_exist
+from selenium_tools.name_exist import name_exist
 
 
 def change_github_pfp(driver: webdriver) -> None:
@@ -21,12 +22,19 @@ def change_github_pfp(driver: webdriver) -> None:
                    .screenshot_as_png)
     driver.get("https://github.com/login?return_to=https%3A%2F%2Fgithub.com%2Fsettings%2Fprofile")
 
-    while not id_exist("login_field", driver):
+    while id_exist('login_field', driver):
         sleep(1)
     my_login = Credential()
     driver.find_element_by_id('login_field').send_keys(my_login.get_email())
+
+    while id_exist('password', driver):
+        sleep(1)
     driver.find_element_by_id('password').send_keys(my_login.get_password())
+
+    while name_exist('commit', driver):
+        sleep(1)
     driver.find_element_by_name('commit').click()
+
     del my_login
 
     while not id_exist("avatar_upload", driver):
